@@ -67,6 +67,8 @@ export default {
     msg: String,
   },
 }
+
+export const a = 123
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
