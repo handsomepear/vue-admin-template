@@ -1,6 +1,8 @@
 export default {
   path: '/home',
   name: 'Home',
+  meta: {
+    title: '首页',
+  },
   component: () => import(/* webpackChunkName: "home" */ '../views/Home'),
-  children: [{ path: '/exit', component: () => import(/* webpackChunkName: "about" */ '../views/About') }],
 }
