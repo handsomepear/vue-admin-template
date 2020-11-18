@@ -1,8 +1,15 @@
+import Layout from '../layout'
 export default {
-  path: '/home',
+  path: '/',
+  component: Layout,
   name: 'Home',
   meta: {
     title: '首页',
   },
-  component: () => import(/* webpackChunkName: "home" */ '../views/Home'),
+  children: [
+    {
+      path: 'index',
+      component: () => import(/* webpackChunkName: "home" */ '../views/Home'),
+    },
+  ],
 }

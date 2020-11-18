@@ -1,7 +1,14 @@
 <template>
   <div class="home">
     <h1>home</h1>
-    <Button type="danger" text="home" />
+    <el-row>
+      <span>自定义button组件</span>
+      <Button type="primary" text="home" />
+    </el-row>
+    <el-row>
+      <span>element-ui button 组件：</span>
+      <el-button type="primary" disabled>主要按钮</el-button>
+    </el-row>
   </div>
 </template>
 

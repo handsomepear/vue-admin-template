@@ -1,15 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Layout from '@/views/Layout'
+import Layout from '@/views/layout'
 Vue.use(VueRouter)
 
-export const constantRoutes = [
-  {
-    path: '/',
-    redirect: '/home',
-  },
-  ...getRoutes(),
-]
+export const constantRoutes = [...getRoutes()]
 
 function getRoutes() {
   const routes = []
@@ -64,8 +58,17 @@ export const asyncRoutes = [
   },
 ]
 
-const router = new VueRouter({
-  constantRoutes,
-})
+const createRouter = () =>
+  new VueRouter({
+    scrollBehavior: () => ({ y: 0 }),
+    routes: constantRoutes,
+  })
+const router = createRouter()
+
+// 重置路由：所有的路由信息都是存放在matcher中的，新建一个路由实例 然后替换旧的路由
+export function resetRouter() {
+  const newRouter = createRouter()
+  router.matcher = newRouter.matcher
+}
 
 export default router
