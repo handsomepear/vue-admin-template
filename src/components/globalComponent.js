@@ -12,13 +12,15 @@ const requireComponent = require.context('.', true, /\.vue$/)
 requireComponent.keys().forEach(filePath => {
   // 获取到对应路径的模块
   const config = requireComponent(filePath)
-  const matchRet = filePath.match(/(\/(\w+))?\/(\w+).vue$/)
   // 默认取文件夹的名字为组件名，如果没有文件夹 则取文件名为组件名
-  const componentName = changeStr(matchRet[2] || matchRet[3])
+  const componentName = filePath.replace(/^\.(\/(.*))?\/(.*)\.vue$/, function($1, $2, $3, $4) {
+    return $3 || $4
+  })
+
   // 注册全局组件
   Vue.component(componentName, config.default || config)
 })
 
-function changeStr(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1)
-}
+// function changeStr(str) {
+//   return str.charAt(0).toUpperCase() + str.slice(1)
+// }

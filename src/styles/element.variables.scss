@@ -1,0 +1,16 @@
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+@import '~element-ui/packages/theme-chalk/src/index';
+
+// 适配暗黑模式
+@media (prefers-color-scheme: dark) {
+  .red {
+    color: #fff;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .red {
+    color: #000;
+  }
+}

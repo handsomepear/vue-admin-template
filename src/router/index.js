@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Layout from '@/views/layout'
+import Layout from '@/layout'
 Vue.use(VueRouter)
 
 export const constantRoutes = [...getRoutes()]

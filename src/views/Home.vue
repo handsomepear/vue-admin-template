@@ -3,7 +3,7 @@
     <h1>home</h1>
     <el-row>
       <span>自定义button组件</span>
-      <Button type="primary" text="home" />
+      <Button text="home" />
     </el-row>
     <el-row>
       <span>element-ui button 组件：</span>
@@ -17,6 +17,14 @@ import Button from './Render'
 export default {
   components: {
     Button,
+  },
+  data() {
+    return {}
+  },
+  methods: {
+    foo() {
+      console.log(this.age)
+    },
   },
 }
 </script>

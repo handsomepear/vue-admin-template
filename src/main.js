@@ -5,9 +5,10 @@ import store from './store'
 
 import './components/globalComponent'
 import ElementUI from 'element-ui'
-// import 'element-ui/lib/theme-chalk/index.css'
-import '@/assets/common.scss'
-import '@/assets/element.variables.scss'
+import 'element-ui/lib/theme-chalk/index.css'
+import '@/styles/common.scss'
+// import '@/styles/element.variables.scss'
+
 Vue.use(ElementUI)
 Vue.config.productionTip = false
 

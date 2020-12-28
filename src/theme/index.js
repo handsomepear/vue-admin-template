@@ -4,6 +4,7 @@ import generatorColors from './color'
 import colorMap from './colorMap'
 const version = require('element-ui/package.json').version
 const primaryColor = localStorage.getItem('themeColor') || '#20a0ff'
+let elementCssText = '' // element css 文件内容
 document.body.style.setProperty('--primary-color', primaryColor)
 
 export const state = Vue.observable({
@@ -17,8 +18,9 @@ getIndexStyle()
 export const mutations = {
   setPrimaryColor(color) {
     state.primaryColor = color
-    document.body.style.setProperty('--primary-color', color)
+    window.document.body.style.setProperty('--primary-color', color)
     localStorage.setItem('themeColor', color)
+    getIndexStyle()
   },
 }
 
@@ -54,6 +56,7 @@ function getStyleTemplate(data) {
 
 // cssText
 function writeStyle(cssText) {
+  const primaryColor = state.primaryColor
   const colors = Object.assign({}, { primary: primaryColor }, generatorColors(primaryColor))
   for (let k in colors) {
     // 将关键词再转换成色值
@@ -61,7 +64,7 @@ function writeStyle(cssText) {
   }
   if (state.isFirstAppend) {
     // 首次添加
-    const style = document.createElement('style')
+    const style = window.document.createElement('style')
     style.innerText = cssText
     document.head.appendChild(style)
     state.isFirstAppend = false
@@ -76,8 +79,11 @@ export function getSeparatedStyles() {
 }
 
 export function getIndexStyle() {
+  if (elementCssText) {
+    return writeStyle(elementCssText)
+  }
   getFile(`//unpkg.com/element-ui@${version}/lib/theme-chalk/index.css`).then(({ data }) => {
-    const originStyle = getStyleTemplate(data)
+    const originStyle = (elementCssText = getStyleTemplate(data))
     writeStyle(originStyle)
   })
 }

@@ -7,7 +7,7 @@ export default {
     },
     text: {
       type: String,
-      default: 'button',
+      default: '',
     },
   },
 
@@ -38,9 +38,9 @@ export default {
   width: 100px;
   height: 40px;
   line-height: 40px;
-  border: 0px;
+  border: 0;
   border-radius: 5px;
-  color: #ffff;
+  color: #fff;
 }
 .btn-success {
   background: #2ecc71;
@@ -52,6 +52,6 @@ export default {
   background: #f39c12;
 }
 .btn-normal {
-  background: #bdc3c7;
+  background-color: var(--primary-color);
 }
 </style>
